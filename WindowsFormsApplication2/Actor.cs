@@ -8,7 +8,14 @@ namespace WindowsFormsApplication2
 
 class Actor
 {
-    private string nombre, apellido;
+    private string nombre, apellido, id;
+
+    public string Actor_id
+    {
+        get { return id; }
+        set { id = value; }
+
+    }
 
     public string first_name 
     {

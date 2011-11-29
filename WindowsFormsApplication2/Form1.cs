@@ -53,8 +53,9 @@ namespace WindowsFormsApplication2
 
         private void boton_Consultar(object sender, EventArgs e)
         {
+            dataGridView1.DataSource = null;
             MySqlCommand consultaSql = ObjConexion.CreateCommand();
-            consultaSql.CommandText = "SELECT first_name, last_name FROM Actor";
+            consultaSql.CommandText = "SELECT actor_id, first_name, last_name FROM Actor";
             MySqlDataReader reader = consultaSql.ExecuteReader();
 
             while (reader.Read())
@@ -62,6 +63,7 @@ namespace WindowsFormsApplication2
                 Actor objActor = new Actor();
                 objActor.first_name = reader["first_name"].ToString();
                 objActor.last_name = reader["last_name"].ToString();
+                objActor.Actor_id = reader["actor_id"].ToString();
                 listaActores.Add(objActor);
                 
             }
@@ -150,12 +152,15 @@ namespace WindowsFormsApplication2
 
         private void button5_Click(object sender, EventArgs e)
         {
+            MySqlCommandBuilder command_Builder;
+            command_Builder = new MySqlCommandBuilder(dataAdapterActor);
+
             DataRow dFila = dataSetActor.Tables["Actor"].NewRow();
 
-            dFila[1] = textBox1.Text;
-            dFila[2] = textBox2.Text;
-            dFila[3] = textBox3.Text;
-            dFila[4] = textBox4.Text;
+            dFila[0] = textBox1.Text;
+            dFila[1] = textBox2.Text;
+            dFila[2] = textBox3.Text;
+            dFila[3] = textBox4.Text;
 
             dataSetActor.Tables["Actor"].Rows.Add(dFila);
 
@@ -163,6 +168,10 @@ namespace WindowsFormsApplication2
             indice = CantidadDeFilas - 1;
 
             dataAdapterActor.Update(dataSetActor, "Actor");
+
+            MessageBox.Show("Registro añadido con exito");
+
+
 
         }
 
