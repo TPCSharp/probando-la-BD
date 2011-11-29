@@ -12,9 +12,12 @@ namespace WindowsFormsApplication2
 {
     public partial class Form1 : Form
     {
-        MySqlConnection connection = new MySqlConnection();
+        MySqlConnection ObjConexion = new MySqlConnection();
         String connectionString; 
         List<Actor> listaActores = new List<Actor>();
+
+        DataSet dataSetActor;
+        MySql.Data.MySqlClient.MySqlDataAdapter dataAdapterActor;
 
         public Form1()
         {
@@ -27,9 +30,9 @@ namespace WindowsFormsApplication2
             try
             {
                 connectionString = "Server=127.0.0.1; Database=sakila; Uid=root; Pwd=mandrake;";
-                connection.ConnectionString = connectionString;
-                connection.Open();
-
+                ObjConexion.ConnectionString = connectionString;
+                ObjConexion.Open();
+                
                 MessageBox.Show("La conexion se realizo con exito!");
 
 
@@ -42,11 +45,11 @@ namespace WindowsFormsApplication2
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void boton_Consultar(object sender, EventArgs e)
         {
-            MySqlCommand instruccion = connection.CreateCommand();
-            instruccion.CommandText = "SELECT first_name, last_name FROM Actor";
-            MySqlDataReader reader = instruccion.ExecuteReader();
+            MySqlCommand consultaSql = ObjConexion.CreateCommand();
+            consultaSql.CommandText = "SELECT first_name, last_name FROM Actor";
+            MySqlDataReader reader = consultaSql.ExecuteReader();
 
             while (reader.Read())
             {
@@ -63,7 +66,16 @@ namespace WindowsFormsApplication2
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            connection.Close();
+            ObjConexion.Close();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+           
+
+
+
+           
         }
 
 
