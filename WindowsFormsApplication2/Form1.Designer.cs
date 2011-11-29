@@ -45,6 +45,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.boton_modificar = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +135,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(711, 242);
+            this.button2.Location = new System.Drawing.Point(674, 239);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -144,7 +145,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(431, 242);
+            this.button3.Location = new System.Drawing.Point(431, 239);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 11;
@@ -154,7 +155,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(530, 242);
+            this.button4.Location = new System.Drawing.Point(512, 239);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 12;
@@ -164,9 +165,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(431, 312);
+            this.button5.Location = new System.Drawing.Point(512, 85);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 48);
+            this.button5.Size = new System.Drawing.Size(123, 23);
             this.button5.TabIndex = 13;
             this.button5.Text = "Guardar Nuevo";
             this.button5.UseVisualStyleBackColor = true;
@@ -174,7 +175,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(431, 283);
+            this.button6.Location = new System.Drawing.Point(434, 85);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 14;
@@ -184,7 +185,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(611, 242);
+            this.button7.Location = new System.Drawing.Point(593, 239);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 15;
@@ -194,19 +195,30 @@
             // 
             // boton_modificar
             // 
-            this.boton_modificar.Location = new System.Drawing.Point(530, 283);
+            this.boton_modificar.Location = new System.Drawing.Point(746, 141);
             this.boton_modificar.Name = "boton_modificar";
-            this.boton_modificar.Size = new System.Drawing.Size(234, 34);
+            this.boton_modificar.Size = new System.Drawing.Size(187, 23);
             this.boton_modificar.TabIndex = 16;
-            this.boton_modificar.Text = "Guardar modificacion en registro";
+            this.boton_modificar.Text = "Actualizar Registro Actual";
             this.boton_modificar.UseVisualStyleBackColor = true;
             this.boton_modificar.Click += new System.EventHandler(this.boton_modificar_Click);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(746, 198);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(187, 23);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "Eliminar Registro Actual";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1087, 651);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.boton_modificar);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -252,6 +264,7 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button boton_modificar;
+        private System.Windows.Forms.Button button8;
     }
 }
 

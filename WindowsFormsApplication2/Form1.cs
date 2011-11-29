@@ -191,8 +191,28 @@ namespace WindowsFormsApplication2
             dFila2[3] = textBox4.Text;
 
             dataAdapterActor.Update(dataSetActor, "Actor");
+            
+            button1.PerformClick();
 
+        }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            MySqlCommandBuilder command_Builder;
+            command_Builder = new MySqlCommandBuilder(dataAdapterActor);
+
+            dataSetActor.Tables["Actor"].Rows[indice].Delete();
+            
+            CantidadDeFilas--;
+            indice = 0;
+
+            dataAdapterActor.Update(dataSetActor, "Actor");
+
+            navegar_registros();
+            
+            MessageBox.Show("Registro Eliminado");
+
+            button1.PerformClick();
         }
 
 
