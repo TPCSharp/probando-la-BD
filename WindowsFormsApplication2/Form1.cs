@@ -171,6 +171,8 @@ namespace WindowsFormsApplication2
 
             MessageBox.Show("Registro añadido con exito");
 
+            button1.PerformClick();
+
 
 
         }
