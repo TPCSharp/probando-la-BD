@@ -19,6 +19,8 @@ namespace WindowsFormsApplication2
         DataSet dataSetActor;
         MySql.Data.MySqlClient.MySqlDataAdapter dataAdapterActor;
 
+        int CantidadDeFilas =0, indice = 0;
+        
         public Form1()
         {
             InitializeComponent();
@@ -31,6 +33,10 @@ namespace WindowsFormsApplication2
             {
                 connectionString = "Server=127.0.0.1; Database=sakila; Uid=root; Pwd=mandrake;";
                 ObjConexion.ConnectionString = connectionString;
+
+                string selectAll = "SELECT * From Actor";
+                dataAdapterActor = new MySqlDataAdapter(selectAll, ObjConexion);
+                
                 ObjConexion.Open();
                 
                 MessageBox.Show("La conexion se realizo con exito!");
@@ -71,13 +77,94 @@ namespace WindowsFormsApplication2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
 
+            dataSetActor = new DataSet();
+            
+            
+            dataAdapterActor.Fill(dataSetActor, "Actor");
 
+            navegar_registros();
+
+            CantidadDeFilas = dataSetActor.Tables["Actor"].Rows.Count;
 
            
         }
 
+        private void navegar_registros()
+        {
+            DataRow dFila;
+
+            dFila = dataSetActor.Tables["Actor"].Rows[indice];
+
+            textBox1.Text = dFila.ItemArray.GetValue(0).ToString();
+            textBox2.Text = dFila.ItemArray.GetValue(1).ToString();
+            textBox3.Text = dFila.ItemArray.GetValue(2).ToString();
+            textBox4.Text = dFila.ItemArray.GetValue(3).ToString();
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            //me fijo de no pasarme del maximo de filas, q como arranca en 0 es 
+            // cantidad de filas - 1 
+            if (indice != CantidadDeFilas - 1)
+            {
+                indice++;
+                navegar_registros();
+            }
+            else
+            {
+                MessageBox.Show("Ultimo registro");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (indice > 0)
+            {
+                indice--;
+                navegar_registros();
+            }
+            else
+            {
+                MessageBox.Show("Primer registro");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            indice = 0;
+            navegar_registros();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            indice = CantidadDeFilas - 1;
+            navegar_registros();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = textBox2.Text = textBox3.Text = "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            DataRow dFila = dataSetActor.Tables["Actor"].NewRow();
+
+            dFila[1] = textBox1.Text;
+            dFila[2] = textBox2.Text;
+            dFila[3] = textBox3.Text;
+            dFila[4] = textBox4.Text;
+
+            dataSetActor.Tables["Actor"].Rows.Add(dFila);
+
+            CantidadDeFilas++;
+            indice = CantidadDeFilas - 1;
+
+            dataAdapterActor.Update(dataSetActor, "Actor");
+
+        }
 
 
 
