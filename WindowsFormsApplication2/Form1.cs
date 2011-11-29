@@ -98,7 +98,6 @@ namespace WindowsFormsApplication2
 
             dFila = dataSetActor.Tables["Actor"].Rows[indice];
 
-            textBox1.Text = dFila.ItemArray.GetValue(0).ToString();
             textBox2.Text = dFila.ItemArray.GetValue(1).ToString();
             textBox3.Text = dFila.ItemArray.GetValue(2).ToString();
             textBox4.Text = dFila.ItemArray.GetValue(3).ToString();
@@ -147,7 +146,12 @@ namespace WindowsFormsApplication2
 
         private void button6_Click(object sender, EventArgs e)
         {
-            textBox1.Text = textBox2.Text = textBox3.Text = "";
+            DateTime fecha = new DateTime();
+            fecha = DateTime.Now;
+
+
+            textBox4.Text = fecha.ToString();
+            textBox3.Text = textBox2.Text = "";
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -157,7 +161,6 @@ namespace WindowsFormsApplication2
 
             DataRow dFila = dataSetActor.Tables["Actor"].NewRow();
 
-            dFila[0] = textBox1.Text;
             dFila[1] = textBox2.Text;
             dFila[2] = textBox3.Text;
             dFila[3] = textBox4.Text;
@@ -185,7 +188,7 @@ namespace WindowsFormsApplication2
 
             DataRow dFila2 = dataSetActor.Tables["Actor"].Rows[indice];
 
-            dFila2[0] = textBox1.Text;
+            
             dFila2[1] = textBox2.Text;
             dFila2[2] = textBox3.Text;
             dFila2[3] = textBox4.Text;
