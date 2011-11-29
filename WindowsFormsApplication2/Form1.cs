@@ -178,6 +178,23 @@ namespace WindowsFormsApplication2
 
         }
 
+        private void boton_modificar_Click(object sender, EventArgs e)
+        {
+            MySqlCommandBuilder command_Builder;
+            command_Builder = new MySqlCommandBuilder(dataAdapterActor);
+
+            DataRow dFila2 = dataSetActor.Tables["Actor"].Rows[indice];
+
+            dFila2[0] = textBox1.Text;
+            dFila2[1] = textBox2.Text;
+            dFila2[2] = textBox3.Text;
+            dFila2[3] = textBox4.Text;
+
+            dataAdapterActor.Update(dataSetActor, "Actor");
+
+
+        }
+
 
 
     }
